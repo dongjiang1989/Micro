@@ -92,6 +92,8 @@ func BufferedStream(buffered bool) ClientOption {
 }
 
 // Endpoint returns a usable endpoint that invokes the remote endpoint.
+// Execution path:
+//      enc->[]before->run->[]after->dec
 func (c Client) Endpoint() endpoint.Endpoint {
 	return func(ctx context.Context, request interface{}) (interface{}, error) {
 		ctx, cancel := context.WithCancel(ctx)
