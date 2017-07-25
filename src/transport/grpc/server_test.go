@@ -31,12 +31,12 @@ func Test_ExampleGrpcServer(t *testing.T) {
 			}, err
 		},
 		func(cxt context.Context, req interface{}) (interface{}, error) {
-			log.Info("requerst: i am dongjiang's request!!!")
+			log.Info("server requerst: i am dongjiang's request!!!")
 			r := req.(*Pb.CaseRequest)
 			return Case.CaseRequest{A: r.A, B: r.B}, nil
 		},
 		func(cxt context.Context, resp interface{}) (interface{}, error) {
-			log.Info("response: i am dongjiang's response!!!", resp)
+			log.Info("server response: i am dongjiang's response!!!", resp)
 			r := resp.(*Case.CaseResponse)
 			return &Pb.CaseResponse{V: r.V}, nil
 		},
@@ -60,12 +60,12 @@ func Test_ExampleGrpcServer(t *testing.T) {
 		"pb.Case",
 		"Case",
 		func(ctx context.Context, req interface{}) (interface{}, error) {
-			log.Info("requerst: i am dongjiang's request", req)
+			log.Info("client requerst: i am dongjiang's request", req)
 			r := req.(Case.CaseRequest)
 			return &Pb.CaseRequest{A: r.A, B: r.B}, nil
 		},
 		func(ctx context.Context, resp interface{}) (interface{}, error) {
-			log.Info("response: i am dongjiang's response")
+			log.Info("client response: i am dongjiang's response")
 			r := resp.(*Pb.CaseResponse)
 			return &Case.CaseResponse{V: r.V, Ctx: ctx}, nil
 		},
