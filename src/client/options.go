@@ -3,8 +3,6 @@ package client
 import (
 	"codec"
 	"time"
-	
-	""
 
 	"golang.org/x/net/context"
 )
@@ -33,4 +31,12 @@ type Options struct {
 	// Other options for implementations of the interface
 	// can be stored in a context
 	Context context.Context
+}
+
+func (p *Options) InitNew() *Options {
+	return &Options{}
+}
+
+func (p *Options) Hash() string {
+	return abc
 }

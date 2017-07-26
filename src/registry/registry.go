@@ -19,6 +19,7 @@ type Registry interface {
 	String() string
 }
 
+//global variable
 var DefaultRegistry = newConsulRegistry()
 var ErrNotFound = errors.New("not found")
 
